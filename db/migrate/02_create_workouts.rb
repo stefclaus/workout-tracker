@@ -4,11 +4,12 @@ class CreateWorkouts < ActiveRecord::Migration[5.2]
       t.string :workout
       t.string :description
       t.integer :duration
+      t.string :date
     end
   end
 
   def down
-    drop_table :tweets
+    drop_table :workouts
   end
 
 end
