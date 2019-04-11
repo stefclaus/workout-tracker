@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 2) do
     t.string "password_digest"
   end
 
-  create_table "workouts", force: :cascade do |t|
-    t.string  "workout"
-    t.string  "description"
-    t.integer "duration"
-    t.string  "date"
+  create_table "yogaclasses", force: :cascade do |t|
+    t.string "yogaclass"
+    t.string "instructor"
+    t.string "description"
+    t.string "date"
   end
 
 end

@@ -5,6 +5,14 @@ class UsersController < ApplicationController
     erb :"/users/index.html"
   end
 
+  get '/signup' do
+    if !logged_in?
+      erb :"users/new.html"
+    else !!logged_in?
+      redirect '/workouts'
+    end
+  end
+
   # GET: /users/new
   get "/users/new" do
     erb :"/users/new.html"
