@@ -13,6 +13,17 @@ class UsersController < ApplicationController
     end
   end
 
+  post "/signup" do
+    user = User.new(:email => params[:email], :username => params[:username], :password => params[:password])
+    if params[:email] == "" || params[:username] == "" || params[:password] == ""
+      redirect '/signup'
+    else
+      user.save
+      session[:user_id] = user.id
+      redirect '/users/index.html'
+    end
+  end
+
   # GET: /users/new
   get "/users/new" do
     erb :"/users/new.html"
