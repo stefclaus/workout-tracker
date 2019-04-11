@@ -1,4 +1,4 @@
-class CreateWorkouts < ActiveRecord::Migration[5.2]
+class CreateWorkouts < ActiveRecord::Migration
   def up
     create_table :workouts do |t|
       t.string :workout
