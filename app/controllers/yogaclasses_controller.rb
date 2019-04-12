@@ -1,8 +1,13 @@
 class YogaclassesController < ApplicationController
 
   # GET: /yogaclasses
-  get "/yogaclasses" do
-    erb :"/yogaclasses/index.html"
+  get '/tweets' do
+    if logged_in?
+      @tweets = Tweet.all
+      erb :'tweets/tweets'
+    else
+      redirect to '/login'
+    end
   end
 
   # GET: /yogaclasses/new

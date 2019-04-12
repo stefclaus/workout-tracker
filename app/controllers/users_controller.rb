@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
 
   # GET: /users
-  get "/users" do
-    erb :"/users/index.html"
-  end
 
   get "/signup" do
     if !logged_in?
@@ -43,18 +40,22 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET: /users/5
   get "/users/:id" do
     erb :"/users/show.html"
+  end
+
+  get "/users/:slug" do
+    @user = User.find_by_slug(params[:slug])
+    erb :"users/show.html"
   end
 
 
   get "/logout" do
     if !!logged_in?
       session.clear
-      redirect "users/login.html"
+      redirect "/"
     else
-      redirect "/users/index.html"
+      redirect "/"
     end
   end
 
