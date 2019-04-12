@@ -3,10 +3,11 @@ class YogaclassesController < ApplicationController
   # GET: /yogaclasses
   get "/yogaclasses" do
     if logged_in?
-      @tweets = Tweet.all
+      @yogaclasses = Yogaclass.all
       erb :"/yogaclasses/index.html"
     else
       redirect to "/login"
+    end
   end
 
 
