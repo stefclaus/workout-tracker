@@ -27,15 +27,16 @@ class YogaclassesController < ApplicationController
       redirect "/login"
     end
   end
-  
+
   post "/yogaclasses" do
     if !logged_in?
       redirect "/login"
     elsif !params[:yogaclass].empty?
       @user = current_user
-      @yogaclass = Yogaclass.create(:yogaclass => params[:yogaclass])
-      @user.yogaclass << @yogaclass
-      redirect "/yogaclasses/#{@yogaclass.id}"
+      @yogaclass = Yogaclass.create(:yogaclass => params[:yogaclass], :instructor => params[:instructor],
+      :description => params[:description], :date => params[:date])
+    #  @user.yogaclass = @yogaclass
+      redirect "/yogaclasses"
     else
       redirect "/yogaclasses/new"
     end
