@@ -23,9 +23,9 @@ class YogaclassesController < ApplicationController
   post "/yogaclasses" do
     if !logged_in?
       redirect "/login"
-    else !params[:content].empty?
+    elsif !params[:yogaclass].empty?
       @user = current_user
-      @yogaclass = Yogaclass.create(:content => params[:content])
+      @yogaclass = Yogaclass.create(:yogaclass => params[:yogaclass])
       @user.yogaclass << @yogaclass
       redirect "/yogaclasses/#{@yogaclass.id}"
     else
