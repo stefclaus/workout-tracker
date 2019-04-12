@@ -1,3 +1,10 @@
 <h1>This is the show page for an individual instance of your model.</h1>
 
-  <a href="/logout"> <br> Click here to log out</a>
+<h2>Here are all of the Yoga classes this yoga has taken!</h2>
+<h1><%= @user.username%>'s Classes</h1>
+
+<% @user.yogaclaasses.each do |yogaclass| %>
+    <%= yogaclass.content %>
+<% end %>
+
+<a href="/logout"> <br> Click here to log out</a>
