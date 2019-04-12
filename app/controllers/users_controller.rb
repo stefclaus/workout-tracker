@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  # GET: /users
 
   get "/signup" do
     if !logged_in?
@@ -38,10 +37,6 @@ class UsersController < ApplicationController
     else
       redirect "/signup"
     end
-  end
-
-  get "/users/:id" do
-    erb :"/users/show.html"
   end
 
   get "/users/:slug" do
