@@ -11,15 +11,28 @@ class YogaclassesController < ApplicationController
   end
 
 
-  # GET: /yogaclasses/new
-  #get "/yogaclasses/new" do
-  #  erb :"/yogaclasses/new.html"
-  #end
+  get "/yogaclasses/new" do
+    if logged_in?
+      erb :"/yogaclasses/new.html"
+    else
+      redirect "/login"
+    end
+  end
 
-  # POST: /yogaclasses
-  #post "/yogaclasses" do
-  #  redirect "/yogaclasses"
-  #end
+
+  post "/yogaclasses" do
+    if !logged_in?
+      redirect "/login"
+    else !params[:content].empty?
+      @user = current_user
+      @yogaclass = Yogaclass.create(:content => params[:content])
+      @user.yogaclass << @yogaclass
+      redirect "/yogaclasses/#{@yogaclass.id}"
+    else
+      redirect "/yogaclasses/new"
+    end
+  end
+
 
   # GET: /yogaclasses/5
   #get "/yogaclasses/:id" do
