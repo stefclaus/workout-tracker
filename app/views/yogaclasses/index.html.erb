@@ -2,10 +2,10 @@
 
 
 <p> Welcome, <%= current_user.username %>
-<h2> Tweets </h2>
+<h2> Yoga Classes </h2>
 
-<% @tweets.each do |tweet| %>
+<% @yogaclasses.each do |yogaclass| %>
   <div>
-    <%= tweet.content %>
+    <%= yogaclass.yogaclass %>
   </div>
 <% end %>
