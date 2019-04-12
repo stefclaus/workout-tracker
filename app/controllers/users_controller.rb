@@ -5,11 +5,11 @@ class UsersController < ApplicationController
     erb :"/users/index.html"
   end
 
-  get '/signup' do
+  get "/signup" do
     if !logged_in?
       erb :"users/new.html"
     else !!logged_in?
-      redirect '/workouts'
+      redirect "/users/index.html"
     end
   end
 
@@ -20,10 +20,28 @@ class UsersController < ApplicationController
     else
       user.save
       session[:user_id] = user.id
-      redirect '/users/index.html'
+      redirect "/users/index.html"
     end
   end
 
+  get '/login' do
+    if !logged_in?
+      erb :"users/login.html"
+    else
+      redirect "/users/index.html"
+    end
+  end
+
+  post '/login' do
+    user = User.find_by(:username => params[:username])
+
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/users/index.html"
+    else
+      redirect "/signup"
+    end
+  end
   # GET: /users/new
   get "/users/new" do
     erb :"/users/new.html"
