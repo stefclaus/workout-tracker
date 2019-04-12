@@ -25,7 +25,7 @@ class YogaclassesController < ApplicationController
       redirect "/login"
     elsif !params[:yogaclass].empty?
       @user = current_user
-      @yogaclass = Yogaclass.create(:yogaclass => params[:yogaclass])
+      @yogaclass = Yogaclass.create(:yogaclass => params[:yogaclass], :description => params[:description])
       @user.yogaclass << @yogaclass
       redirect "/yogaclasses/#{@yogaclass.id}"
     else
