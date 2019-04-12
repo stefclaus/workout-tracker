@@ -42,33 +42,20 @@ class UsersController < ApplicationController
       redirect "/signup"
     end
   end
-  # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
-  end
-
-  # POST: /users
-  post "/users" do
-    redirect "/users"
-  end
 
   # GET: /users/5
   get "/users/:id" do
     erb :"/users/show.html"
   end
 
-  # GET: /users/5/edit
-  get "/users/:id/edit" do
-    erb :"/users/edit.html"
+
+  get "/logout" do
+    if !!logged_in?
+      session.clear
+      redirect "users/login.html"
+    else
+      redirect "/users/index.html"
+    end
   end
 
-  # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
-  end
-
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
-  end
 end
