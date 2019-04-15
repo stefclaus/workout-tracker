@@ -9,7 +9,7 @@ class CreateYogaclasses < ActiveRecord::Migration
   end
 
   def down
-    drop_table :workouts
+    drop_table :yogaclasses
   end
 
 end

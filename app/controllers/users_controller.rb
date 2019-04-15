@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       redirect '/signup'
     else
       user.save
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
       redirect "/yogaclasses"
     end
   end
