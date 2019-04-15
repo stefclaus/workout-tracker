@@ -62,8 +62,11 @@ class YogaclassesController < ApplicationController
          @yogaclass = Yogaclass.find(params[:id])
   #       if !params[:yogaclass].empty?
            @yogaclass.update(yogaclass: params[:yogaclass])
+           @yogaclass.update(instructor: params[:instructor])
+           @yogaclass.update(description: params[:description])
+           @yogaclass.update(date: params[:date])
            redirect "/yogaclasses/#{@yogaclass.id}"
-#         end 
+#         end
 #         else
 #         if @yogaclass && @yogaclass.user == current_user
 #           if @yogaclass.update(yogaclass: params[:yogaclass])
