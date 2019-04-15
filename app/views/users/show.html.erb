@@ -3,10 +3,8 @@
 <h2><%= @user.username%>'s Yoga Classes</h2>
 
 <% @user.yogaclasses.each do |yogaclass| %>
-  <div>
     <%= yogaclass.yogaclass %>
     <%= yogaclass.instructor %>
     <%= yogaclass.description %>
     <%= yogaclass.date %>
-  </div>
 <% end %>
