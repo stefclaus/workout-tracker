@@ -34,8 +34,7 @@ class YogaclassesController < ApplicationController
     elsif !params[:yogaclass].empty?
       @user = current_user
       @yogaclass = Yogaclass.create(:yogaclass => params[:yogaclass], :instructor => params[:instructor], :description => params[:description], :date => params[:date])
-    #  @user.yogaclasses << @yogaclass
-      @user.yogaclasses << Yogaclass.create(:yogaclass => params[:yogaclass], :instructor => params[:instructor], :description => params[:description], :date => params[:date])
+      @user.yogaclasses << @yogaclass
       redirect "/yogaclasses/#{@yogaclass.id}"
     else
       redirect "/yogaclasses/new"
@@ -56,7 +55,7 @@ class YogaclassesController < ApplicationController
   end
 
   patch '/yogaclasses/:id' do
-#     if logged_in?
+     if !!logged_in?
 #       if params[:yogaclass] == ""
 #         redirect to "/yogaclasses/#{params[:id]}/edit"
 #       else
@@ -78,13 +77,13 @@ class YogaclassesController < ApplicationController
 #           redirect to '/yogaclass'
 #         end
 #       end
-#     else
-#       redirect to '/login'
-#     end
+    else
+      redirect to '/login'
+     end
    end
 
    delete '/yogaclasses/:id' do
-#     if logged_in?
+     if logged_in?
        @yogaclass = Yogaclass.find_by_id(params[:id])
 #       if @yogaclass && @yogaclass.user == current_user
         @yogaclass.delete
@@ -92,23 +91,7 @@ class YogaclassesController < ApplicationController
         redirect "/yogaclasses"
 #     else
 #       redirect to '/login'
-#     end
+     end
    end
 
-
-
-  # GET: /yogaclasses/5/edit
-  #get "/yogaclasses/:id/edit" do
-  #  erb :"/yogaclasses/edit.html"
-  #end
-
-  # PATCH: /yogaclasses/5
-  #patch "/yogaclasses/:id" do
-  #  redirect "/yogaclasses/:id"
-#  end
-
-  # DELETE: /yogaclasses/5/delete
-  #delete "/yogaclasses/:id/delete" do
-  #  redirect "/yogaclasses"
-  #end
 end
