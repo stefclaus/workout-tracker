@@ -1,6 +1,16 @@
 <h1>You successfully added this yoga class.</h1>
-
+<br>
+<br>
 <h2><%= @yogaclass.yogaclass %></h2>
 <p>Instructor: <%= @yogaclass.instructor %></p>
 <p>Description: <%= @yogaclass.description %></p>
 <p>Date: <%= @yogaclass.date %></p>
+
+<br>
+<br>
+<br>
+
+<h3>What next?</h3>
+<a href="/users/#{@user.username}"> <br> View your classes:</a>
+<a href="/yogaclasses"> <br> View all classes taken in the Yogathon:</a>
+<a href="/yogaclasses/leaderboard"> <br> View the leaderboard:</a>
