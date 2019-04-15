@@ -9,6 +9,16 @@ class UsersController < ApplicationController
     end
   end
 
+  get "/users/leaderboard" do
+    if !logged_in?
+      @users = Users.all
+      erb :"users/new.html"
+    else !!logged_in?
+      erb :"users/index.html"
+    end
+  end
+
+
   post "/signup" do
     user = User.new(:email => params[:email], :username => params[:username], :password => params[:password])
     if params[:email] == "" || params[:username] == "" || params[:password] == ""
@@ -44,10 +54,7 @@ class UsersController < ApplicationController
     erb :"users/show.html"
   end
 
-  get "/users/leaderboard" do
 
-    erb :"users/index.html"
-  end
 
 
   get "/logout" do
