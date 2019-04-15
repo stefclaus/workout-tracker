@@ -10,7 +10,13 @@
 <br>
 <br>
 
+<form action="/yogaclasses/<%= @yogaclass.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Yogaclass">
+</form>
+
 <h3>What next?</h3>
+<a href="/yogaclasses/<%= @yogaclass.id %>/edit">Edit Class</a>
 <a href="/users/<%= @yogaclass.user_id %>">View your classes:</a>
 <a href="/yogaclasses"> <br> View all classes taken in the Yogathon:</a>
 <a href="/yogaclasses/leaderboard"> <br> View the leaderboard:</a>

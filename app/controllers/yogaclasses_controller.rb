@@ -83,17 +83,17 @@ class YogaclassesController < ApplicationController
 #     end
    end
 
-#   delete '/yogaclass/:id/delete' do
+   delete '/yogaclasses/:id/delete' do
 #     if logged_in?
-#       @yogaclass = Yogaclass.find_by_id(params[:id])
+       @yogaclass = Yogaclass.find_by_id(params[:id])
 #       if @yogaclass && @yogaclass.user == current_user
-#         @yogaclass.delete
+        @yogaclass.delete
 #       end
-#       redirect to '/yogaclass'
+       erb :"/yogaclasses/index.html"
 #     else
 #       redirect to '/login'
 #     end
-#   end
+   end
 
 
 
