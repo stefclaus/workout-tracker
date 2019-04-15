@@ -1,1 +1,11 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+
+<h2> Edit Yogaclass </h2>
+
+<form method="post" action="/yogaaclasses/<%=@yogaclass.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <input type="text" name="content" value="<%= @yogaclass.yogaclass %>">
+  <input type="text" name="content" value="<%= @yogaclass.instructor %>">
+  <input type="text" name="content" value="<%= @yogaclass.description %>">
+  <input type="text" name="content" value="<%= @yogaclass.date %>">
+  <input type="submit" value="submit">
+</form>
