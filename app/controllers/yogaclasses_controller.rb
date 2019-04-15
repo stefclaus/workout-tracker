@@ -41,7 +41,51 @@ class YogaclassesController < ApplicationController
     end
   end
 
+  get '/yogaclasses/:id/edit' do
+    if logged_in?
+      @yogaclass = Yogaclass.find(params[:id])
+      if @yogaclass && @yogaclass.user == current_user
+        erb :'yogaclasses/edit.html'
+      else
+        redirect to '/yogaclasses'
+      end
+    else
+      redirect to '/login'
+    end
+  end
 
+  patch '/yogaclasses/:id' do
+     if logged_in?
+       if params[:yogaclass] == ""
+         redirect to "/yogaclasses/#{params[:id]}/edit"
+       else
+         @yogaclass = Yogaclass.find_by_id(params[:id])
+         if @yogaclass && @yogaclass.user == current_user
+           if @yogaclass.update(yogaclass: params[:yogaclass])
+             redirect to "/yogaclass/#{@yogaclass.id}"
+           else
+             redirect to "/yogaclass/#{@yogaclass.id}/edit"
+           end
+         else
+           redirect to '/yogaclass'
+         end
+       end
+     else
+       redirect to '/login'
+     end
+   end
+
+   delete '/yogaclass/:id/delete' do
+     if logged_in?
+       @yogaclass = Yogaclass.find_by_id(params[:id])
+       if @yogaclass && @yogaclass.user == current_user
+         @yogaclass.delete
+       end
+       redirect to '/yogaclass'
+     else
+       redirect to '/login'
+     end
+   end
 
 
 
