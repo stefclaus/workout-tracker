@@ -59,13 +59,17 @@ class YogaclassesController < ApplicationController
 #       if params[:yogaclass] == ""
 #         redirect to "/yogaclasses/#{params[:id]}/edit"
 #       else
-         @yogaclass = Yogaclass.find_by_id(params[:id])
+         @yogaclass = Yogaclass.find(params[:id])
+  #       if !params[:yogaclass].empty?
+           @yogaclass.update(yogaclass: params[:yogaclass])
+           redirect "/yogaclasses/#{@yogaclass.id}"
+#         end 
+#         else
 #         if @yogaclass && @yogaclass.user == current_user
-           if @yogaclass.update(yogaclass: params[:yogaclass])
-             redirect "/yogaclasses/#{@yogaclass.id}"
-           else
-            redirect to "/yogaclass/#{@yogaclass.id}/edit"
-          end
+#           if @yogaclass.update(yogaclass: params[:yogaclass])
+#           else
+#            redirect to "/yogaclass/#{@yogaclass.id}/edit"
+#          end
 #         else
 #           redirect to '/yogaclass'
 #         end
