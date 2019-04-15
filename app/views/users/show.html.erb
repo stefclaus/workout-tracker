@@ -5,8 +5,5 @@
 <h2>Here are all of the classes that you have taken as a part of the Yogathon.</h2>
 
 <% @user.yogaclasses.each do |yogaclass| %>
-  <p>  Level: <%= yogaclass.yogaclass %> </p>
-  <p>  Instructor:  <%= yogaclass.instructor %> </p>
-  <p>  Description:  <%= yogaclass.description %> </p>
-  <p>  Date:  <%= yogaclass.date %> </p> 
+  <p>  <%= yogaclass.yogaclass %> </p>
 <% end %>

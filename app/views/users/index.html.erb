@@ -1,1 +1,9 @@
-<h1>This is the Model's index page.</h1>
+<h1>Yogathon Leaderboard!</h1>
+
+<h2>Here are all of the participants in the Yogathon, and the number of classes they've taken!</h2>
+
+ <% @users.each do |user| %>
+  <div>
+    <%= user.username %>
+  </div>
+<% end %>

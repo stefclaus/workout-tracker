@@ -44,6 +44,11 @@ class UsersController < ApplicationController
     erb :"users/show.html"
   end
 
+  get "/users/leaderboard" do
+    
+    erb :"users/index.html"
+  end
+
 
   get "/logout" do
     if !!logged_in?
