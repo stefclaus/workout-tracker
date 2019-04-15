@@ -1,7 +1,7 @@
 
 <h2> Edit Yogaclass </h2>
 
-<form method="post" action="/yogaaclasses/<%=@yogaclass.id%>">
+<form method="post" action="/yogaclasses/<%=@yogaclass.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
   <input type="text" name="content" value="<%= @yogaclass.yogaclass %>">
   <input type="text" name="content" value="<%= @yogaclass.instructor %>">
