@@ -21,6 +21,7 @@ class YogaclassesController < ApplicationController
 
   get "/yogaclasses/:id" do
     if logged_in?
+      @user = User.find_by_slug(params[:slug])
       @yogaclass = Yogaclass.find(params[:id])
       erb :"/yogaclasses/show.html"
     else
