@@ -2,8 +2,8 @@
 
 <h2>Here are all of the participants in the Yogathon, and the number of classes they've taken!</h2>
 
- <% @users.each do |user| %>
+<% @users.each do |user| %>
   <div>
-    <%= user.username %>
+    <%= user.username %> <%=user.yogaclasses.count%> 
   </div>
 <% end %>

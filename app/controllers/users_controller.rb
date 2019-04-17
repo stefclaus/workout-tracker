@@ -11,9 +11,9 @@ class UsersController < ApplicationController
 
   get "/users/leaderboard" do
     if !logged_in?
-      @users = Users.all
       erb :"users/new.html"
     else !!logged_in?
+      @users = User.all
       erb :"users/index.html"
     end
   end
