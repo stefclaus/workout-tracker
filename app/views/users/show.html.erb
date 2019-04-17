@@ -2,11 +2,12 @@
 
 <br>
 
+<h3> You've taken <%=@user.yogaclasses.count%> classes since May 1!</h3>
+
+<h3> Take more <%= 30- @user.yogaclasses.count%> classes before May 31 to be entered into a drawing for free prizes!</h3>
+
 <h2>Here are all of the classes that you have taken as a part of the Yogathon.</h2>
 
 <% @user.yogaclasses.each do |yogaclass| %>
-  <p><%= yogaclass.yogaclass %></p>
-  <p><%= yogaclass.description %></p>
-  <p><%= yogaclass.instructor %></p>
-  <p><%= yogaclass.date %></p>
+  <p><%= yogaclass.yogaclass %> <%= yogaclass.date %></p>
 <% end %>
