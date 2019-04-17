@@ -1,9 +1,11 @@
-<h1>Yogathon Leaderboard!</h1>
-
-<h2>Here are all of the participants in the Yogathon, and the number of classes they've taken!</h2>
+<h2>Yogathon Leaderboard!</h2>
 
 <% @users.each do |user| %>
   <div>
-    <%= user.username %> <%=user.yogaclasses.count%> 
+    <%= user.username %> <%=user.yogaclasses.count%>
   </div>
 <% end %>
+
+<h3>What next?</h3>
+<a href="/yogaclasses"> <br> View all classes taken in the Yogathon:</a>
+<a href="/yogaclasses/new"> <br> Add a class to your profile:</a>
