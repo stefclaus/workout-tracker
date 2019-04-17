@@ -21,7 +21,7 @@ class YogaclassesController < ApplicationController
 
   get "/yogaclasses/:id" do
     if logged_in?
-      @user = User.find_by_slug(params[:slug])
+      #@user = User.find_by_slug(params[:slug])
       @yogaclass = Yogaclass.find(params[:id])
       erb :"/yogaclasses/show.html"
     else
@@ -45,11 +45,11 @@ class YogaclassesController < ApplicationController
   get '/yogaclasses/:id/edit' do
     if logged_in?
       @yogaclass = Yogaclass.find(params[:id])
-    #  if @yogaclass && @yogaclass.user == current_user
+      if @yogaclass && @yogaclass.user == current_user
         erb :'yogaclasses/edit.html'
-    #  else
-  #      redirect to '/yogaclasses'
-    #  end
+      else
+        redirect to '/yogaclasses'
+      end
     else
       redirect to '/login'
     end
@@ -58,23 +58,6 @@ class YogaclassesController < ApplicationController
   patch '/yogaclasses/:id' do
      if !logged_in?
        redirect to '/login'
-
-#       if params[:yogaclass] == ""
-#         redirect to "/yogaclasses/#{params[:id]}/edit"
-#       else
-  #       if !params[:yogaclass].empty?
-
-#         end
-#         else
-#         if @yogaclass && @yogaclass.user == current_user
-#           if @yogaclass.update(yogaclass: params[:yogaclass])
-#           else
-#            redirect to "/yogaclass/#{@yogaclass.id}/edit"
-#          end
-#         else
-#           redirect to '/yogaclass'
-#         end
-#       end
     else
       @yogaclass = Yogaclass.find(params[:id])
       @yogaclass.update(yogaclass: params[:yogaclass])
