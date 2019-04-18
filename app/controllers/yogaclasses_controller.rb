@@ -1,7 +1,6 @@
-require 'rack-flash'
-
 class YogaclassesController < ApplicationController
-  use Rack::Flash
+  enable :sessions
+  register Sinatra::Flash
 
   get "/yogaclasses" do
     if logged_in?
@@ -37,7 +36,7 @@ class YogaclassesController < ApplicationController
       @user = current_user
       @yogaclass = Yogaclass.create(:yogaclass => params[:yogaclass], :instructor => params[:instructor], :description => params[:description], :date => params[:date])
       @user.yogaclasses << @yogaclass
-      flash[:message] = "Successfully created yogaclass!"
+      flash[:yogaclass] = "Successfully added yoga class!"
       redirect "/yogaclasses/#{@yogaclass.id}"
     else
       redirect "/yogaclasses/new"
@@ -66,7 +65,7 @@ class YogaclassesController < ApplicationController
       @yogaclass.update(instructor: params[:instructor])
       @yogaclass.update(description: params[:description])
       @yogaclass.update(date: params[:date])
-       flash[:message] = "Successfully updated yoga class."
+      flash[:message] = "Successfully updated yoga class."
       redirect "/yogaclasses/#{@yogaclass.id}"
      end
    end
