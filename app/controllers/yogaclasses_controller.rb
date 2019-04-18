@@ -71,12 +71,12 @@ class YogaclassesController < ApplicationController
    delete '/yogaclasses/:id' do
      if logged_in?
        @yogaclass = Yogaclass.find_by_id(params[:id])
-#       if @yogaclass && @yogaclass.user == current_user
+       if @yogaclass && @yogaclass.user == current_user
         @yogaclass.delete
-#       end
+       end
         redirect "/yogaclasses"
-#     else
-#       redirect to '/login'
+     else
+       redirect to '/login'
      end
    end
 
