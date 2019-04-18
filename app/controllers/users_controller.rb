@@ -54,9 +54,6 @@ class UsersController < ApplicationController
     erb :"users/show.html"
   end
 
-
-
-
   get "/logout" do
     if !!logged_in?
       session.clear

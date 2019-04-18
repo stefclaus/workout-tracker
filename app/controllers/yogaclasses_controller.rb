@@ -1,6 +1,8 @@
-class YogaclassesController < ApplicationController
+require 'rack-flash'
 
-  # GET: /yogaclasses
+class YogaclassesController < ApplicationController
+  use Rack::Flash
+
   get "/yogaclasses" do
     if logged_in?
       @yogaclasses = Yogaclass.all
@@ -21,7 +23,6 @@ class YogaclassesController < ApplicationController
 
   get "/yogaclasses/:id" do
     if logged_in?
-      #@user = User.find_by_slug(params[:slug])
       @yogaclass = Yogaclass.find(params[:id])
       erb :"/yogaclasses/show.html"
     else
@@ -36,6 +37,7 @@ class YogaclassesController < ApplicationController
       @user = current_user
       @yogaclass = Yogaclass.create(:yogaclass => params[:yogaclass], :instructor => params[:instructor], :description => params[:description], :date => params[:date])
       @user.yogaclasses << @yogaclass
+      flash[:message] = "Successfully created yogaclass!"
       redirect "/yogaclasses/#{@yogaclass.id}"
     else
       redirect "/yogaclasses/new"
@@ -64,6 +66,7 @@ class YogaclassesController < ApplicationController
       @yogaclass.update(instructor: params[:instructor])
       @yogaclass.update(description: params[:description])
       @yogaclass.update(date: params[:date])
+       flash[:message] = "Successfully updated yoga class."
       redirect "/yogaclasses/#{@yogaclass.id}"
      end
    end
@@ -73,6 +76,7 @@ class YogaclassesController < ApplicationController
        @yogaclass = Yogaclass.find_by_id(params[:id])
        if @yogaclass && @yogaclass.user == current_user
         @yogaclass.delete
+        flash[:message] = "Successfully deleted yoga class."
        end
         redirect "/yogaclasses"
      else
