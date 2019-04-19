@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :"users/new.html"
     else !!logged_in?
-      redirect "/yogaclasses"
+      redirect "/users/leaderboard"
     end
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :"users/login.html"
     else
-      redirect "/yogaclasses"
+      redirect "/users/leaderboard"
     end
   end
 
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/yogaclasses"
+      redirect "/users/leaderboard"
     else
       redirect "/yogaclasses"
     end
