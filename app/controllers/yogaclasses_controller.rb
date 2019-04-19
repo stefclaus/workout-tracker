@@ -1,5 +1,4 @@
 class YogaclassesController < ApplicationController
-  enable :sessions
   register Sinatra::Flash
 
   get "/yogaclasses" do
