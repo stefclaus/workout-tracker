@@ -35,7 +35,7 @@ class YogaclassesController < ApplicationController
       @user = current_user
       @yogaclass = Yogaclass.create(:yogaclass => params[:yogaclass], :instructor => params[:instructor], :description => params[:description], :date => params[:date])
       @user.yogaclasses << @yogaclass
-      flash[:yogaclass] = "Successfully added yoga class!"
+      flash[:new] = "Successfully added yoga class!"
       redirect "/yogaclasses/#{@yogaclass.id}"
     else
       redirect "/yogaclasses/new"
@@ -64,7 +64,7 @@ class YogaclassesController < ApplicationController
       @yogaclass.update(instructor: params[:instructor])
       @yogaclass.update(description: params[:description])
       @yogaclass.update(date: params[:date])
-      flash[:message] = "Successfully updated yoga class."
+      flash[:edit] = "Successfully updated yoga class."
       redirect "/yogaclasses/#{@yogaclass.id}"
      end
    end
@@ -74,7 +74,7 @@ class YogaclassesController < ApplicationController
        @yogaclass = Yogaclass.find_by_id(params[:id])
        if @yogaclass && @yogaclass.user == current_user
         @yogaclass.delete
-        flash[:message] = "Successfully deleted yoga class."
+        flash[:delete] = "Successfully deleted yoga class."
        end
         redirect "/yogaclasses"
      else
