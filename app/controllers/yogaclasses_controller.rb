@@ -72,6 +72,7 @@ class YogaclassesController < ApplicationController
    delete '/yogaclasses/:id' do
      if logged_in?
        @yogaclass = Yogaclass.find_by_id(params[:id])
+       flash[:notdelete] = "You can't delete another yogi's class."
        if @yogaclass && @yogaclass.user == current_user
         @yogaclass.delete
         flash[:delete] = "Successfully deleted yoga class."

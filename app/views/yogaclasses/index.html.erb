@@ -2,6 +2,11 @@
 <%= flash[:delete] %> 
 <% end %>
 
+<% if flash.has_key?(:notdelete) %> 
+<%= flash[:notdelete] %> 
+<% end %>
+
+
 <h1> Welcome, <%= current_user.username %> </h1>
 
 <h2> Here are all of the classes taken as a part of the yogathon </h2>
