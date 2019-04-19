@@ -6,24 +6,26 @@
 <%= flash[:edit] %> 
 <% end %>
 
-<h1>This is your yoga class:</h1>
-<br>
+<h1>Yoga Class:</h1>
 <br>
 <h2><%= @yogaclass.yogaclass %></h2>
 <p>Instructor: <%= @yogaclass.instructor %></p>
 <p>Description: <%= @yogaclass.description %></p>
 <p>Date: <%= @yogaclass.date %></p>
 
-<br>
-<br>
-<br>
+<br></br>
 
 <form action="/yogaclasses/<%= @yogaclass.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Yogaclass">
 </form>
 
-<h3>What next?</h3>
+<br><h3>What next?</h3></br>
+
+
 <a href="/yogaclasses/<%= @yogaclass.id %>/edit">Edit Class</a>
 <a href="/yogaclasses"> <br> View all classes taken in the Yogathon</a>
 <a href="/users/leaderboard"> <br> View the leaderboard</a>
+<a href="/users/<%= current_user.slug %>"> <br> View your profile</a>
+<a href="/yogaclasses/new"> <br> Add a class to count it in the yogathon!</a>
+<a href="/logout"> <br> Logout</a>
