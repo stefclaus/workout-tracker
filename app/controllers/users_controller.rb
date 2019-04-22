@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     else
       user.save
       session[:user_id] = user.id
-      redirect "/yogaclasses"
+      redirect "/users/leaderboard"
     end
   end
 
