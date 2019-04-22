@@ -17,12 +17,9 @@ class YogaclassesController < ApplicationController
   end
 
   get "/yogaclasses/:id" do
-    if logged_in?
+    redirect_if_not_logged_in
       @yogaclass = Yogaclass.find(params[:id])
       erb :"/yogaclasses/show.html"
-    else
-      redirect "/login"
-    end
   end
 
   post "/yogaclasses" do
