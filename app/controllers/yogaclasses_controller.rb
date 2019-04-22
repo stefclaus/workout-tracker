@@ -12,11 +12,8 @@ class YogaclassesController < ApplicationController
 
 
   get "/yogaclasses/new" do
-    if logged_in?
-      erb :"/yogaclasses/new.html"
-    else
-      redirect "/login"
-    end
+    redirect_if_not_logged_in
+    erb :"/yogaclasses/new.html"
   end
 
   get "/yogaclasses/:id" do
